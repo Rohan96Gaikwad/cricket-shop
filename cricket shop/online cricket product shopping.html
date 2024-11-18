@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Shop</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        
+
+        header {
+            background-color: #282828;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            width: 250px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 150px;
+            object-fit: fill;
+            border-radius: 10px;
+
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            color: #28a745;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .product-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-button:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .cart-summary button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-summary button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .cart-details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+
+        .cart-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-details li {
+            margin: 10px 0;
+        }
+
+        .cart-details .total-price {
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>.....Cricket Product Shop.....</h1>
+</header>
+
+<div class="container">
+    <!-- Product 1 -->
+    <div class="product-card">
+        <img class="product-img" src="image/bat.png" alt="Cricket Bat">
+        <div class="product-name">Cricket Bat</div>
+        <div class="product-price">₹1500</div>
+        <button class="product-button" onclick="addToCart('Cricket Bat', 1500)">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+        <img class="product-img" src="image/ball.jpg" alt="Cricket Ball">
+        <div class="product-name">Cricket Ball</div>
+        <div class="product-price">₹500</div>
+        <button class="product-button" onclick="addToCart('Cricket Ball', 500)">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+        <img class="product-img" src="image/helmet.png" alt="Cricket Helmet">
+        <div class="product-name">Cricket Helmet</div>
+        <div class="product-price">₹2500</div>
+        <button class="product-button" onclick="addToCart('Cricket Helmet', 2500)">Add to Cart</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+        <img class="product-img" src="image/hand glove.png" alt="Cricket Gloves">
+        <div class="product-name">Cricket Gloves</div>
+        <div class="product-price">₹1200</div>
+        <button class="product-button" onclick="addToCart('Cricket Gloves', 1200)">Add to Cart</button>
+    </div>
+
+    <!-- Product 5: Cricket Shoes -->
+    <div class="product-card">
+        <img class="product-img" src="image/shoes.webp" alt="Cricket Shoes">
+        <div class="product-name">Cricket Shoes</div>
+        <div class="product-price">₹2000</div>
+        <button class="product-button" onclick="addToCart('Cricket Shoes', 2000)">Add to Cart</button>
+    </div>
+
+    <!-- Product 6: Cricket Pads -->
+    <div class="product-card">
+        <img class="product-img" src="image/pads.png" alt="Cricket Pads">
+        <div class="product-name">Cricket Pads</div>
+        <div class="product-price">₹1800</div>
+        <button class="product-button" onclick="addToCart('Cricket Pads', 1800)">Add to Cart</button>
+    </div>
+
+    <!-- Product 7: Wicketkeeping Gloves -->
+    <div class="product-card">
+        <img class="product-img" src="image/wicketkepping.jpg" alt="Wicketkeeping Gloves">
+        <div class="product-name">Wicketkeeping Gloves</div>
+        <div class="product-price">₹1500</div>
+        <button class="product-button" onclick="addToCart('Wicketkeeping Gloves', 1500)">Add to Cart</button>
+    </div>
+
+    <!-- Product 8: Cricket Stumps -->
+    <div class="product-card">
+        <img class="product-img" src="image/stumps.png" alt="Cricket Stumps">
+        <div class="product-name">Cricket Stumps</div>
+        <div class="product-price">₹1000</div>
+        <button class="product-button" onclick="addToCart('Cricket Stumps', 1000)">Add to Cart</button>
+    </div>
+</div>
+
+<div class="cart-summary">
+    <button onclick="calculateTotalItems()">Product Total</button>
+    <button onclick="calculateTotalPrice()">Total Price</button>
+    <button onclick="displayCartDetails()">View Cart</button>
+    <button onclick="completePurchase()">Complete Purchase</button>
+
+    <div class="result" id="result"></div>
+
+    <div class="cart-details" id="cartDetails"></div>
+</div>
+
+<script>
+    let cart = [];
+
+    // Function to add products to the cart
+    function addToCart(productName, productPrice) {
+        cart.push({ name: productName, price: productPrice });
+        alert(`${productName} added to cart!`);
+    }
+
+    // Function to calculate the total number of products in the cart
+    function calculateTotalItems() {
+        const totalItems = cart.length;
+        document.getElementById('result').innerHTML = `Total Products: ${totalItems}`;
+    }
+
+    // Function to calculate the total price of products in the cart
+    function calculateTotalPrice() {
+        const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+        document.getElementById('result').innerHTML = `Total Price: ₹${totalPrice}`;
+    }
+
+    // Function to display the cart details (items added to cart)
+    function displayCartDetails() {
+        const cartDetailsElement = document.getElementById('cartDetails');
+        if (cart.length === 0) {
+            cartDetailsElement.innerHTML = "Your cart is empty!";
+        } else {
+            let cartHTML = "<ul>";
+            cart.forEach(product => {
+                cartHTML += `<li>${product.name} - ₹${product.price}</li>`;
+            });
+            cartHTML += "</ul>";
+
+            const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+            cartHTML += `<p class="total-price">Total Price: ₹${totalPrice}</p>`;
+
+            cartDetailsElement.innerHTML = cartHTML;
+        }
+    }
+
+    // Function to complete the purchase
+    function completePurchase() {
+        if (cart.length === 0) {
+            alert("Your cart is empty! Add products before purchasing.");
+        } else {
+            const totalPrice = cart.reduce((total, product) => total + product.price, 0);
+            alert(`Thank you for your purchase! Total Amount: ₹${totalPrice}`);
+            cart = []; // Clear cart after purchase
+            document.getElementById('cartDetails').innerHTML = ""; // Clear cart details
+            document.getElementById('result').innerHTML = ""; // Reset totals
+        }
+    }
+</script>
+
+</body>
+</html>
